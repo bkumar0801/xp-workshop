@@ -12,8 +12,8 @@ public class Movie {
     }
 
     public void setPriceCode(int priceCode) {
-        PriceFactoryInitializer pi = PriceFactoryInitializer.getInstance();
-        _price = pi.getPriceType(priceCode);
+        PriceFactoryInitializer instance = PriceFactoryInitializer.getInstance();
+        _price = instance.getPriceType(priceCode);
     }
     public String getTitle (){
         return _title;
