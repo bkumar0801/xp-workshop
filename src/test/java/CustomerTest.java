@@ -86,4 +86,25 @@ public class CustomerTest {
         assertEquals(expectedStatement, rahul.statement());
 
     }
+
+    @Test
+    public void shouldPrintHtmlStatementForRentedMovies() {
+        Movie newton = new Movie("Newton", Movie.NEW_RELEASE);
+        Rental rentalForNewton = new Rental(newton, 1);
+        Movie jungleBook = new Movie("Jungle Book", Movie.CHILDRENS);
+        Rental rentalForJungleBook = new Rental(jungleBook, 4);
+        Movie terminator = new Movie("Terminator", Movie.REGULAR);
+        Rental rentalForTerminator = new Rental(terminator, 4);
+        Customer rahul = new Customer("Rahul");
+        rahul.addRental(rentalForJungleBook);
+        rahul.addRental(rentalForNewton);
+        rahul.addRental(rentalForTerminator);
+        String expectedStatement = "<H1>Rentals for <EM>Rahul</EM></H1><P>\n" +
+                "Jungle Book: 3.0<BR>\n" +
+                "Newton: 3.0<BR>\n" +
+                "Terminator: 5.0<BR>\n" +
+                "<P>You owe <EM>11.0</EM><P>\n" +
+                "On this rental you earned <EM>3</EM> frequent renter points<P>";
+        assertEquals(expectedStatement, rahul.htmlStatement());
+    }
 }
