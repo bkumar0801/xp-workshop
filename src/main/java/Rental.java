@@ -5,9 +5,6 @@ class Rental {
         _movie = movie;
         _daysRented = daysRented;
     }
-    public int getDaysRented() {
-        return _daysRented;
-    }
     public Movie getMovie() {
         return _movie;
     }
@@ -17,7 +14,6 @@ class Rental {
     }
 
     int getFrequentRenterPoints() {
-        // add bonus for a two day new release rental
         return _movie.getFrequentRenterPoints(_daysRented);
     }
 

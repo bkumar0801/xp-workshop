@@ -12,17 +12,8 @@ public class Movie {
     }
 
     public void setPriceCode(int priceCode) {
-        switch (priceCode) {
-            case Movie.REGULAR:
-                _price = new RegularPrice();
-                break;
-            case Movie.NEW_RELEASE:
-                _price = new NewReleasePrice();;
-                break;
-            case Movie.CHILDRENS:
-                _price = new ChildrensPrice();
-                break;
-        }
+        PriceFactoryInitializer pi = PriceFactoryInitializer.getInstance();
+        _price = pi.getPriceType(priceCode);
     }
     public String getTitle (){
         return _title;
